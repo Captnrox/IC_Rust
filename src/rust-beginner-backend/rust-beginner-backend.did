@@ -1,3 +1,25 @@
-service : {
+/*service : {
     "greet": (text) -> (text) query;
+}*/
+
+type Tweet = record {
+  id: nat64;
+  user: text;
+  content: text;
+  likes: nat64;
+  // Add any additional fields from your Tweet struct here
+};
+
+service : {
+  // Post a new tweet with a username and content
+  "post_tweet": (user: text, content: text) -> (text);
+  
+  // Like a tweet by its ID
+  "like_tweet": (tweet_id: nat64) -> (text);
+  
+  // Get all tweets
+  "get_tweets": () -> (vec Tweet) query;
+  
+  // You can add any additional methods from your canister here
 }
+
